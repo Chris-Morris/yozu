@@ -1,16 +1,20 @@
 const express = require('express');
 const router = express.Router();
-const { checkUserExists } = require('../db/mongodb.js');
+const { addUser, findUser, findAllUsers } = require('../db/mongodb.js');
 
-// router.get('/', async (req, res) => {
-//     console.log("request received")
-//     const people = await checkUserExists();
-//     console.log(people);
-//     res.json(people);
-// })
+router.post('/adduser', async (req, res) => {
+    const user = await addUser(req.body);
+    res.json(user);
+})
 
-router.get('/hello', (req, res) => {
-    res.send("hello?");
+router.get('/finduser', async (req, res) => {
+    const people = await findUser(req.query);
+    res.json(people);
+})
+
+router.get('/findallusers', async (req, res) => {
+    const people = await findAllUsers();
+    res.json(people);
 })
 
 module.exports = router;
