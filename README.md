@@ -12,6 +12,16 @@ ___
 ```
 
 ```JSON
+"scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+```
+
+```JSON
 "dependencies": {
     "concurrently": "^6.4.0",
     "cors": "^2.8.5",
@@ -19,6 +29,8 @@ ___
     "mongodb": "^4.2.0"
   }
 ```
+
+
 
 ___
 ```javascript
